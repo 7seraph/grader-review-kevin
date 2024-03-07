@@ -54,11 +54,11 @@ echo $TESTRESULTS
 
 
 TOTALTESTS=$(echo $TESTRESULTS | awk -F'[, ]' '{print $3}')
-echo $TOTALTESTS
+
 FAILED=$(echo $TESTRESULTS | awk -F'[, ]' '{print $6}')
-echo $FAILED
+
 
 PASSED=$(($TOTALTESTS - $FAILED))
-GRADE=$(($PASSED / $TOTALTESTS))
+GRADE=($PASSED/$TOTALTESTS)
 #PASSED=$(($FAILED-$TOTALTESTS)) / $TOTALTESTS
 echo 'Your Grade is :' $GRADE
