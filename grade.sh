@@ -53,10 +53,12 @@ TESTRESULTS=$(cat test-results.txt | tail -n 2 | head -n 1)
 echo $TESTRESULTS
 
 
-TOTALTESTS= echo $TESTRESULTS | awk -F'[, ]' '{print $3}'
+TOTALTESTS=$(echo $TESTRESULTS | awk -F'[, ]' '{print $3}')
 echo $TOTALTESTS
-FAILED= echo $TESTRESULTS | awk -F'[, ]' '{print $6}'
+FAILED=$(echo $TESTRESULTS | awk -F'[, ]' '{print $6}')
 echo $FAILED
 
-PASSED= $(($FAILED-$TOTALTESTS)) / $TOTALTESTS
-echo $GRADE
+PASSED=$(($TOTALTESTS - $FAILED))
+GRADE=$(($PASSED / $TOTALTESTS))
+#PASSED=$(($FAILED-$TOTALTESTS)) / $TOTALTESTS
+echo 'Your Grade is :' $GRADE
